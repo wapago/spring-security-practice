@@ -1,0 +1,27 @@
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: "jdbc:mysql://localhost:3306/security_study"
+        username: root
+        password: root
+
+    jpa:
+        hibernate:
+            ddl-auto: none
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQLDialect
+                format_sql: true
+                use_sql_comments: true
+
+
+
+
+
+
+
+
+
