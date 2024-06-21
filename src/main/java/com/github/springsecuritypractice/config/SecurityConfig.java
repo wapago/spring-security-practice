@@ -2,6 +2,8 @@ package com.github.springsecuritypractice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -79,5 +81,15 @@ public class SecurityConfig {
                 .build();
 
         return new InMemoryUserDetailsManager(user1, user2);
+    }
+
+    // 계층권한 설정
+    @Bean
+    public RoleHierarchy roleHierarchy() {
+        RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
+
+        roleHierarchy.setHierarchy("ROLE_C > ROLE_B\n" + "ROLE_B > ROLE_A");
+
+        return roleHierarchy;
     }
 }
